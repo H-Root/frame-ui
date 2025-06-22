@@ -1,10 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-	title: "Frame UI",
-	description: "Over Simplified Components",
-};
-
 export default function RootLayout({
 	children,
 }: Readonly<{
