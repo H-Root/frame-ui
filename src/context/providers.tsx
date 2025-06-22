@@ -5,21 +5,21 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "./theme-provider";
 
 const Providers = ({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) => {
-	return (
-		<ThemeProvider
-			attribute="class"
-			defaultTheme="system"
-			enableSystem
-			disableTransitionOnChange
-		>
-			<main>{children}</main>
-			<Toaster richColors />
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <main>{children}</main>
+      <Toaster richColors />
+    </ThemeProvider>
+  );
 };
 
 export default Providers;
