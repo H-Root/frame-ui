@@ -1,8 +1,17 @@
-import type { MDXComponents } from "mdx/types";
+import { Button } from "@/components/ui/button";
+import { cn } from "./lib/utils";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    ...components,
-    h1: ({ children }) => <h1>{children}</h1>,
-  };
-}
+export const mdxComponents = {
+  Button,
+  table: ({ className, ...props }: React.ComponentProps<"table">) => (
+    <div className="my-6 w-full overflow-y-auto">
+      <table
+        className={cn(
+          "relative w-full overflow-hidden border-none text-sm",
+          className,
+        )}
+        {...props}
+      />
+    </div>
+  ),
+};

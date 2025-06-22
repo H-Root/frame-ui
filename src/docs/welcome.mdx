@@ -1,6 +1,15 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { Button } from "@/components/ui/button";
+
 # Test MD
 
 This page demonstrates basic Markdown features supported in MDX.
+
+<Button>Hello Mother Fuckers</Button>
 
 ---
 
@@ -28,7 +37,7 @@ This is a regular paragraph.
 
 _Italic text_
 
-~~Strikethrough~~
+<p className="line-through">Strikethrough</p>
 
 > This is a blockquote.
 
@@ -79,19 +88,46 @@ function greet(name) {
 
 ## Tables
 
-| Name     | Type     | Default |
-| -------- | -------- | ------- |
-| `title`  | `string` | `""`    |
-| `active` | `bool`   | `false` |
-
----
-
-## Task Lists
-
-- [x] Write docs
-- [ ] Add MDX page
-- [ ] Deploy site
-
+<table>
+  <caption>Front-end web developer course 2021</caption>
+  <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Sarah</th>
+      <td>JavaScript frameworks</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row" colSpan="2">
+        Average age
+      </th>
+      <td>33</td>
+    </tr>
+  </tfoot>
+</table>
 ---
 
 Thanks for reading!
