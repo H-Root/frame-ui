@@ -1,28 +1,50 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as React from "react";
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
 
-function Separator({
-  className,
-  orientation = "horizontal",
-  decorative = true,
-  ...props
-}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
-  return (
-    <SeparatorPrimitive.Root
-      data-slot="separator"
-      decorative={decorative}
-      orientation={orientation}
-      className={cn(
-        "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
-        className
-      )}
-      {...props}
-    />
-  )
+const separatorVariants = cva("shrink-0", {
+	variants: {
+		orientation: {
+			horizontal: "w-full h-px border-t",
+			vertical: "h-full w-px border-l",
+		},
+		variant: {
+			solid: "border-solid",
+			dashed: "border-dashed",
+		},
+	},
+	defaultVariants: {
+		variant: "dashed",
+		orientation: "horizontal",
+	},
+});
+
+export interface SeparatorProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		VariantProps<typeof separatorVariants> {
+	asChild?: boolean;
 }
 
-export { Separator }
+function Separator({
+	className,
+	orientation = "horizontal",
+	decorative = true,
+	variant,
+	...props
+}: React.ComponentProps<typeof SeparatorPrimitive.Root> & SeparatorProps) {
+	return (
+		<SeparatorPrimitive.Root
+			data-slot="separator"
+			decorative={decorative}
+			orientation={orientation}
+			className={cn(separatorVariants({ variant, orientation }), className)}
+			{...props}
+		/>
+	);
+}
+
+export { Separator };
