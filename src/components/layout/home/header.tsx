@@ -27,10 +27,10 @@ export function Header() {
 						</Link>
 
 						<Link
-							href="/components"
+							href="/docs"
 							className="text-sm font-mono hover:text-muted-foreground transition-colors"
 						>
-							COMPONENTS
+							DOCS
 						</Link>
 					</div>
 
