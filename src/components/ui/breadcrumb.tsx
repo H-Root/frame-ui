@@ -2,7 +2,7 @@ import * as React from "react";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive } from "radix-ui";
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
 	return (
@@ -81,7 +81,7 @@ function BreadcrumbLink({
 }: React.ComponentProps<"a"> & {
 	asChild?: boolean;
 }) {
-	const Comp = asChild ? Slot : "a";
+	const Comp = asChild ? SlotPrimitive.Slot : "a";
 	return (
 		<Comp
 			data-slot="breadcrumb-link"
