@@ -6,6 +6,7 @@
       "dependencies": {
         "@hookform/resolvers": "^5.1.1",
         "@mdx-js/loader": "^3.1.0",
+        "@mdx-js/mdx": "^3.1.0",
         "@mdx-js/react": "^3.1.0",
         "@next/mdx": "^15.3.4",
         "@types/mdx": "^2.0.13",
@@ -27,9 +28,13 @@
         "react-resizable-panels": "^3.0.3",
         "recharts": "^2.15.4",
         "remark-gfm": "^4.0.1",
+        "remark-mdx": "^3.1.0",
+        "remark-parse": "^11.0.0",
         "shiki": "^3.7.0",
         "sonner": "^2.0.5",
         "tailwind-merge": "^3.3.1",
+        "unified": "^11.0.5",
+        "unist-util-inspect": "^8.1.0",
         "vaul": "^1.1.2",
         "zod": "^3.25.67",
       },
@@ -1340,6 +1345,8 @@
     "undici-types": ["undici-types@6.21.0", "", {}, "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="],
 
     "unified": ["unified@11.0.5", "", { "dependencies": { "@types/unist": "^3.0.0", "bail": "^2.0.0", "devlop": "^1.0.0", "extend": "^3.0.0", "is-plain-obj": "^4.0.0", "trough": "^2.0.0", "vfile": "^6.0.0" } }, "sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA=="],
+
+    "unist-util-inspect": ["unist-util-inspect@8.1.0", "", { "dependencies": { "@types/unist": "^3.0.0" } }, "sha512-mOlg8Mp33pR0eeFpo5d2902ojqFFOKMMG2hF8bmH7ZlhnmjFgh0NI3/ZDwdaBJNbvrS7LZFVrBVtIE9KZ9s7vQ=="],
 
     "unist-util-is": ["unist-util-is@6.0.0", "", { "dependencies": { "@types/unist": "^3.0.0" } }, "sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw=="],
 

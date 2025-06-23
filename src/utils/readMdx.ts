@@ -20,3 +20,25 @@ export const getAllDocPaths = () => {
     slug: file.split(".")[0],
   }));
 };
+
+export const mapSidebarLinks = () => {
+  const files = readdirSync(docsPath);
+
+  return files
+    .map((file) => {
+      const filePath = path.join(docsPath, file);
+      const rawFile = readFileSync(filePath, "utf-8");
+      const { data } = matter(rawFile);
+
+      return {
+        title: data.title,
+        presented: data.presented,
+        slug: file.split(".")[0],
+      };
+    })
+    .filter((data) => {
+      if (data.presented) {
+        return data;
+      }
+    });
+};

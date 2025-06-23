@@ -8,25 +8,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { readdirSync } from "fs";
+import { mapSidebarLinks } from "@/utils/readMdx";
 import Link from "next/link";
-import path from "path";
 
 export function AppSidebar() {
-  const docsPath = path.join(process.cwd(), "src", "docs");
-  const files = readdirSync(docsPath);
-
-  const pages = files.map((file) => {
-    const page = file.split(".")[0]!;
-
-    return {
-      title: page
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
-      url: page,
-    };
-  });
+  const pages = mapSidebarLinks();
 
   return (
     <Sidebar
@@ -59,9 +45,9 @@ export function AppSidebar() {
           <SidebarGroupContent className="px-2">
             <SidebarMenu>
               {pages.map((page) => (
-                <SidebarMenuItem className="rounded-0!" key={page.title}>
+                <SidebarMenuItem className="rounded-0!" key={page.slug}>
                   <SidebarMenuButton asChild>
-                    <Link href={`/docs/${page.url}`}>
+                    <Link href={`/docs/${page.slug}`}>
                       <span>{page.title}</span>
                     </Link>
                   </SidebarMenuButton>

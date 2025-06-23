@@ -1,6 +1,5 @@
-import { mdxComponents } from "@/mdx-components";
+import MdxRenderer from "@/components/mdx-renderer/mdx-renderer";
 import { getAllDocPaths, readMdx } from "@/utils/readMdx";
-import { MDXRemote } from "next-mdx-remote/rsc";
 
 export function generateStaticParams() {
   return getAllDocPaths();
@@ -26,7 +25,7 @@ export default async function Page({
   const { slug } = await params;
   const { content } = readMdx(slug);
 
-  return <MDXRemote source={content} components={mdxComponents} />;
+  return <MdxRenderer content={content} />;
 }
 
 export const dynamicParams = false;

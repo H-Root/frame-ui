@@ -42,7 +42,7 @@ export default function ComponentShowcase() {
           </p>
           <div className="flex items-center justify-center space-x-4">
             <Button variant="outline" size="lg" asChild>
-              <Link href={"/components"}>View Components</Link>
+              <Link href={"/docs"}>View Components</Link>
             </Button>
           </div>
         </div>

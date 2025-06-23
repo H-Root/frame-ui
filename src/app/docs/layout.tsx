@@ -8,10 +8,10 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <SidebarProvider>
       <AppSidebar />
       <Header />
-      <SidebarInset className="m-0! grid grid-cols-12">
-        <main className="col-span-12">{children}</main>
-        {/* <main className="col-span-12 xl:col-span-9">{children}</main> */}
-        {/* <DesktopIndex /> */}
+      <SidebarInset className="m-0!">
+        <main className="container mx-auto my-20 max-w-7xl space-y-8 px-4 md:px-10">
+          {children}
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );
