@@ -12,7 +12,8 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
 
-  const { metadata } = readMdx(slug);
+  // for now it's going to be link this after that it going to be /path/slug
+  const { metadata } = readMdx("docs", slug);
 
   return metadata;
 }
@@ -23,7 +24,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { content } = readMdx(slug);
+  const { content } = readMdx("docs", slug);
 
   return <MdxRenderer content={content} />;
 }

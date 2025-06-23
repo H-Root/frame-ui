@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "./lib/utils";
 import { slugify } from "./utils/slugify";
+import ComponentPreview from "@/components/component-preview/component-preview";
 
 export const mdxComponents = {
   Button,
+  ComponentPreview,
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <div className="my-6 w-full overflow-y-auto">
       <table

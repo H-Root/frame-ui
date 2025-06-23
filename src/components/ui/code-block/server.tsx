@@ -21,7 +21,10 @@ const Code = async ({ code, lang }: TCodeProps) => {
 
   return (
     <div
-      className="border [&>pre]:p-5"
+      className="rounded-0! border [&>pre]:m-0 [&>pre]:p-5"
+      style={{
+        borderRadius: "0px !important",
+      }}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

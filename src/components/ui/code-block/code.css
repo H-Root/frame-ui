@@ -4,6 +4,12 @@ code {
   display: inline-block;
   width: 100%;
   overflow-x: auto;
+  border-radius: 0px !important;
+}
+
+.shiki,
+.shiki * {
+  border-radius: 0px !important;
 }
 
 code .line::before {

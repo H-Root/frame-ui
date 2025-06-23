@@ -12,7 +12,7 @@ import { mapSidebarLinks } from "@/utils/readMdx";
 import Link from "next/link";
 
 export function AppSidebar() {
-  const pages = mapSidebarLinks();
+  const pages = mapSidebarLinks("docs");
 
   return (
     <Sidebar

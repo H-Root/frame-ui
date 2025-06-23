@@ -3,10 +3,12 @@ import path from "path";
 import matter from "gray-matter";
 import { Metadata } from "next";
 
-export const docsPath = path.join(process.cwd(), "src", "docs");
+export const docsPath = (...folder: string[]) => {
+  return path.join(process.cwd(), "src", "content", ...folder);
+};
 
-export const readMdx = (slug: string) => {
-  const filePath = path.join(docsPath, `${slug}.mdx`);
+export const readMdx = (folder: string, slug: string) => {
+  const filePath = docsPath(folder, `${slug}.mdx`);
   const rawFile = readFileSync(filePath, "utf-8");
 
   const { content, data } = matter(rawFile);
@@ -14,19 +16,19 @@ export const readMdx = (slug: string) => {
 };
 
 export const getAllDocPaths = () => {
-  const files = readdirSync(docsPath);
+  const files = readdirSync(docsPath("docs"));
 
   return files.map((file) => ({
     slug: file.split(".")[0],
   }));
 };
 
-export const mapSidebarLinks = () => {
-  const files = readdirSync(docsPath);
+export const mapSidebarLinks = (folder: string) => {
+  const files = readdirSync(docsPath(folder));
 
   return files
     .map((file) => {
-      const filePath = path.join(docsPath, file);
+      const filePath = docsPath(folder, file);
       const rawFile = readFileSync(filePath, "utf-8");
       const { data } = matter(rawFile);
 

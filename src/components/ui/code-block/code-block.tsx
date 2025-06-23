@@ -42,7 +42,7 @@ const CodeBlock = (props: TCodeBlockProps) => {
   return (
     <div className="relative">
       <CopyButton content={props.code} />
-      <Code code={props.code} lang={props.lang as string} />;
+      <Code code={props.code} lang={props.lang as string} />
     </div>
   );
 };
