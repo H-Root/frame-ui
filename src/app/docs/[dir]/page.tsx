@@ -8,11 +8,11 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ dir: string; slug: string }>;
+  params: Promise<{ dir: string }>;
 }) {
-  const { slug, dir } = await params;
+  const { dir } = await params;
 
-  const { metadata } = readMdx(dir, slug);
+  const { metadata } = readMdx(dir, "index");
 
   return metadata;
 }
@@ -20,10 +20,10 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ dir: string; slug: string }>;
+  params: Promise<{ dir: string }>;
 }) {
-  const { slug, dir } = await params;
-  const { content, metadata } = readMdx(dir, slug);
+  const { dir } = await params;
+  const { content, metadata } = readMdx(dir, "index");
 
   return <MdxRenderer frontmatter={metadata} content={content} />;
 }

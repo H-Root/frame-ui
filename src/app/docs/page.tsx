@@ -8,7 +8,7 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const { content } = readMdx("", "index");
+  const { content, metadata } = readMdx("", "index");
 
-  return <MdxRenderer content={content} />;
+  return <MdxRenderer frontmatter={metadata} content={content} />;
 }

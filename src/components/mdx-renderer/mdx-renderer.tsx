@@ -3,8 +3,15 @@ import { refineAst } from "@/utils/mdxToAst";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import TableOfContents from "../utils/table-of-contents";
 import Breadcrumber from "../layout/docs/breadcrumber";
+import { Metadata } from "next";
 
-const MdxRenderer = ({ content }: { content: string }) => {
+const MdxRenderer = ({
+  content,
+  frontmatter,
+}: {
+  content: string;
+  frontmatter: Metadata;
+}) => {
   const refinedAst = refineAst(content);
 
   return (
@@ -15,6 +22,8 @@ const MdxRenderer = ({ content }: { content: string }) => {
             <Breadcrumber />
           </div>
           <div className="prose prose-headings:mt-8 prose-headings:font-semibold prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-invert">
+            <h1>{frontmatter.title as string}</h1>
+            <p>{frontmatter.description}</p>
             <MDXRemote source={content} components={mdxComponents} />
           </div>
         </div>
