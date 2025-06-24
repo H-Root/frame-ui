@@ -23,24 +23,33 @@ export const getAllDocPaths = () => {
   }));
 };
 
-export const mapSidebarLinks = (folder: string) => {
-  const files = readdirSync(docsPath(folder));
+export const mapSidebarLinks = () => {
+  const folders = readdirSync(docsPath()).filter(
+    (folder) => folder !== "examples",
+  );
 
-  return files
-    .map((file) => {
-      const filePath = docsPath(folder, file);
-      const rawFile = readFileSync(filePath, "utf-8");
-      const { data } = matter(rawFile);
+  return folders.map((folder) => {
+    const dir = readdirSync(docsPath(folder));
 
-      return {
-        title: data.title,
-        presented: data.presented,
-        slug: file.split(".")[0],
-      };
-    })
-    .filter((data) => {
-      if (data.presented) {
-        return data;
-      }
-    });
+    return {
+      files: dir
+        .map((file) => {
+          const filePath = docsPath(folder, file);
+          const rawFile = readFileSync(filePath, "utf-8");
+          const { data } = matter(rawFile);
+
+          return {
+            title: data.title,
+            presented: data.presented,
+            slug: file.split(".")[0],
+          };
+        })
+        .filter((data) => {
+          if (data.presented) {
+            return data;
+          }
+        }),
+      folder,
+    };
+  });
 };
