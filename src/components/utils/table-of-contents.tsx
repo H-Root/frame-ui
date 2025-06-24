@@ -19,7 +19,7 @@ const TableOfContents = ({ headings }: { headings: Heading[] }) => {
               key={child}
               className="text-muted-foreground line-clamp-1! block text-xs no-underline"
               style={{
-                paddingLeft: `calc(${header.depth} * 1rem)`,
+                paddingLeft: `calc(${header.depth - 1} * 1rem)`,
               }}
             >
               {header.children[0].value}

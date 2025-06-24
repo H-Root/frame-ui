@@ -8,12 +8,12 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ dir: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, dir } = await params;
 
   // for now it's going to be link this after that it going to be /path/slug
-  const { metadata } = readMdx("docs", slug);
+  const { metadata } = readMdx(dir, slug);
 
   return metadata;
 }
@@ -21,10 +21,10 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ dir: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const { content } = readMdx("docs", slug);
+  const { slug, dir } = await params;
+  const { content } = readMdx(dir, slug);
 
   return <MdxRenderer content={content} />;
 }

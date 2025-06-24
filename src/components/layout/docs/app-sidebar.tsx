@@ -13,7 +13,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 export function AppSidebar() {
-  const pages = mapSidebarLinks();
+  const groups = mapSidebarLinks();
 
   return (
     <Sidebar
@@ -22,18 +22,18 @@ export function AppSidebar() {
     >
       <SidebarContent className="px-4 py-2">
         <SidebarGroup className="p-0">
-          {pages.map((page) => (
-            <Fragment key={`folder-${page.folder}`}>
+          {groups.map((group) => (
+            <Fragment key={`folder-${group.folder}`}>
               <SidebarGroupLabel>
-                {page.folder.split("-").join(" ")}
+                {group.folder.split("-").join(" ")}
               </SidebarGroupLabel>
               <SidebarGroupContent className="px-2">
                 <SidebarMenu>
-                  {page.files.length > 0 ? (
-                    page.files.map((page) => (
+                  {group.files.length > 0 ? (
+                    group.files.map((page) => (
                       <SidebarMenuItem className="rounded-0!" key={page.slug}>
                         <SidebarMenuButton asChild>
-                          <Link href={`/docs/${page.slug}`}>
+                          <Link href={`/docs/${group.folder}/${page.slug}`}>
                             <span>{page.title}</span>
                           </Link>
                         </SidebarMenuButton>

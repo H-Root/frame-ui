@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, statSync } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Metadata } from "next";
@@ -16,7 +16,8 @@ export const readMdx = (folder: string, slug: string) => {
 };
 
 export const getAllDocPaths = () => {
-  const files = readdirSync(docsPath("docs"));
+  // read all directories
+  const files = readdirSync(docsPath("components"));
 
   return files.map((file) => ({
     slug: file.split(".")[0],
@@ -28,28 +29,37 @@ export const mapSidebarLinks = () => {
     (folder) => folder !== "examples",
   );
 
-  return folders.map((folder) => {
-    const dir = readdirSync(docsPath(folder));
+  console.log(folders);
 
-    return {
-      files: dir
-        .map((file) => {
-          const filePath = docsPath(folder, file);
-          const rawFile = readFileSync(filePath, "utf-8");
-          const { data } = matter(rawFile);
+  return folders
+    .filter((fileOrDir) => {
+      const stats = statSync(docsPath(fileOrDir));
 
-          return {
-            title: data.title,
-            presented: data.presented,
-            slug: file.split(".")[0],
-          };
-        })
-        .filter((data) => {
-          if (data.presented) {
-            return data;
-          }
-        }),
-      folder,
-    };
-  });
+      return stats.isDirectory();
+    })
+    .map((folder) => {
+      console.log();
+      const dir = readdirSync(docsPath(folder));
+
+      return {
+        files: dir
+          .map((file) => {
+            const filePath = docsPath(folder, file);
+            const rawFile = readFileSync(filePath, "utf-8");
+            const { data } = matter(rawFile);
+
+            return {
+              title: data.title,
+              presented: data.presented,
+              slug: file.split(".")[0],
+            };
+          })
+          .filter((data) => {
+            if (data.presented) {
+              return data;
+            }
+          }),
+        folder,
+      };
+    });
 };
